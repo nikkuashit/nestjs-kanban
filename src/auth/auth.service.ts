@@ -23,8 +23,8 @@ export class AuthService {
             if(!username){
                 throw new UnauthorizedException('Invalid Credentials');
             }
-
-            const payload: JwtPayload =  { username };
+            const role = 'admin'
+            const payload: JwtPayload =  { username, role  };
             const accessToken = await this.jwtService.sign(payload);
             this.logger.debug(`Generated JWT token with payload: ${JSON.stringify(payload)}`);
 
